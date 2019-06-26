@@ -21,7 +21,7 @@ def main(separator=','):
         try:
             max_value = max(float(value1) for current_group, value1 in group)
 
-            print("%s%s%f" % (current_group, separator, max_value))
+            print("%s\t%f" % (current_group, max_value))
         except ValueError:
             # Count was not a number, so do nothing
             pass
