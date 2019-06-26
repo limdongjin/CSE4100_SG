@@ -17,17 +17,11 @@ def main(separator=','):
     # Since MapReduce is a distributed process, each word
     # may have multiple counts. 'group' will have all counts
     # which can be retrieved using the word as the key.
-    for current_word, group in groupby(data, itemgetter(0)):
+    for current_group, group in groupby(data, itemgetter(0)):
         try:
-            # For each word, pull the count(s) for the word
-            # from 'group' and create a total count
-            # print(group)
-            #for current_word, count in group:
-            #    print(current_word,count)
-            #print("o")
-            total_count = max(float(count) for current_word, count in group)
-            # Write to stdout
-            print("%s%s%d" % (current_word, separator, total_count))
+            max_value = max(float(value1) for current_group, value1 in group)
+
+            print("%s%s%f" % (current_group, separator, max_value))
         except ValueError:
             # Count was not a number, so do nothing
             pass
